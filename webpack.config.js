@@ -6,6 +6,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ROOT_PATH = path.resolve(__dirname);
 
 module.exports = {
+  devtool: process.env.NODE_ENV === 'production' ? '' : 'source-map',
   entry: [
     path.resolve(ROOT_PATH, 'app/src/index')
   ],
@@ -13,7 +14,7 @@ module.exports = {
     extensions: ['', '.js', '.jsx']
   },
   output: {
-    path: path.resolve(ROOT_PATH, 'app/build'),
+    path: process.env.NODE_ENV === 'production' ? path.resolve(ROOT_PATH, 'app/dist') : path.resolve(ROOT_PATH, 'app/build'),
     publicPath: '/',
     filename: 'bundle.js'
   },
@@ -25,12 +26,23 @@ module.exports = {
     progress: true
   },
   module: {
+    preLoaders: [
+      {
+        test: /.jsx?$/,
+        loaders: ['eslint'],
+        include: path.resolve(ROOT_PATH, 'app')
+      }
+    ],
     loaders: [
       {
         test: /.jsx?$/,
         loaders: ['react-hot', 'babel?presets[]=react,presets[]=es2015'],
         exclude: /node_modules/
-      }
+      },
+      {
+        test    : /\.scss$/,
+        loaders : ['style', 'css', 'autoprefixer?browsers=last 2 version', 'sass']
+      },
     ]
   },
   plugins: [

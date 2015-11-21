@@ -1,5 +1,6 @@
 import React from 'react';
 import Todo from './todo.jsx';
+require('./app.scss');
 
 // require('./App.scss');
 
