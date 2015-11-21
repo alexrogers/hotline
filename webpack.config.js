@@ -7,29 +7,34 @@ var ROOT_PATH = path.resolve(__dirname);
 
 module.exports = {
   entry: [
-    path.resolve(ROOT_PATH, 'app/src/index.js')
+    path.resolve(ROOT_PATH, 'app/src/index')
   ],
+  resolve: {
+    extensions: ['', '.js', '.jsx']
+  },
   output: {
     path: path.resolve(ROOT_PATH, 'app/build'),
     publicPath: '/',
     filename: 'bundle.js'
   },
   devServer: {
-    contentBase: path.resolve(ROOT_PATH, 'app/build')
+    contentBase: path.resolve(ROOT_PATH, 'app/build'),
+    historyApiFallback: true,
+    hot: true,
+    inline: true,
+    progress: true
   },
   module: {
     loaders: [
       {
         test: /.jsx?$/,
-        loader: 'babel',
-        exclude: /node_modules/,
-        query: {
-          presets: ['react', 'es2015']
-        }
+        loaders: ['react-hot', 'babel?presets[]=react,presets[]=es2015'],
+        exclude: /node_modules/
       }
     ]
   },
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       title: 'Holy Hotline'
     })
