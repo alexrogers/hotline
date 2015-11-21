@@ -1,25 +1,37 @@
+var webpack = require('webpack');
+
+var path = require('path');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+
+var ROOT_PATH = path.resolve(__dirname);
+
 module.exports = {
   entry: [
-    './app/src/index.js'
+    path.resolve(ROOT_PATH, 'app/src/index.js')
   ],
   output: {
-    path: __dirname + '/app/build',
+    path: path.resolve(ROOT_PATH, 'app/build'),
     publicPath: '/',
     filename: 'bundle.js'
   },
   devServer: {
-    contentBase: './app/build'
+    contentBase: path.resolve(ROOT_PATH, 'app/build')
   },
   module: {
     loaders: [
       {
         test: /.jsx?$/,
-        loader: 'babel-loader',
+        loader: 'babel',
         exclude: /node_modules/,
         query: {
-          presets: ['es2015', 'react']
+          presets: ['react', 'es2015']
         }
       }
     ]
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Holy Hotline'
+    })
+  ]
 };
