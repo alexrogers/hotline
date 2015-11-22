@@ -31,6 +31,7 @@
     "koa-cors": "0.0.16",
     "koa-route": "^3.0.0",
     "node-sass": "^3.4.2",
+    "normalize.css": "^3.0.3",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
     "react-redux": "^4.0.0",
