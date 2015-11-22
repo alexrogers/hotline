@@ -14,6 +14,31 @@ class OptionList extends React.Component {
         passage: 'Isaiah 41:10',
         fullVerse: 'some alternative string here',
       },
+      {
+        temptation: 'Temptation Hotline',
+        passage: '1 Corinthians 10:13',
+        fullVerse: 'some alternative string here',
+      },
+      {
+        temptation: 'Doubt Hotline',
+        passage: 'Romans 10:17',
+        fullVerse: 'some alternative string here',
+      },
+      {
+        temptation: 'Sickness Hotline',
+        passage: 'Isaiah 53:5',
+        fullVerse: 'some alternative string here',
+      },
+      {
+        temptation: 'Depression Hotline',
+        passage: 'Psalm 34:18',
+        fullVerse: 'some alternative string here',
+      },
+      {
+        temptation: 'Loneliness Hotline',
+        passage: 'Deuteronomy 31:8',
+        fullVerse: 'some alternative string here',
+      },
     ];
 
     return (
