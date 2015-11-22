@@ -29,14 +29,14 @@ module.exports = {
     preLoaders: [
       {
         test: /.jsx?$/,
-        loaders: ['eslint'],
+        loaders: ['jscs'],
         include: path.resolve(ROOT_PATH, 'app')
-      }
+      },
     ],
     loaders: [
       {
         test: /.jsx?$/,
-        loaders: ['react-hot', 'babel?presets[]=react,presets[]=es2015'],
+        loaders: ['react-hot', 'babel?presets[]=react,presets[]=es2015,presets[]=stage-0'],
         exclude: /node_modules/
       },
       {
